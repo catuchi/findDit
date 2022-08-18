@@ -24,13 +24,19 @@ searchForm.addEventListener("submit", (e) => {
 
     // loop through posts
     results.forEach((post) => {
+      // check for image
+      const image = post.preview
+        ? post.preview.images[0].source.url
+        : "https://blockbuild.africa/wp-content/uploads/2021/12/reddit.jpg";
       output += `
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${post.title}</h5>
-          <p class="card-text">{post.selftext}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">${truncateText(post.selftext, 100)}</p>
+          <a href="${
+            post.url
+          }" target="_blank" class="btn btn-primary">Read More</a>
         </div>
       </div>
       `;
@@ -85,3 +91,10 @@ function searchReddit(searchTerm, searchLimit, sortBy) {
 //     return console.log(err);
 //   }
 // }
+
+// Truncate text
+function truncateText(text, limit) {
+  const shortened = text.indexOf(" ", limit);
+  if (shortened === -1) return text;
+  return text.substring(0, shortened);
+}

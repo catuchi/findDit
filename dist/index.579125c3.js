@@ -17,13 +17,15 @@ searchForm.addEventListener("submit", (e)=>{
         let output = '<div class="card-columns">';
         // loop through posts
         results.forEach((post)=>{
+            // check for image
+            const image = post.preview ? post.preview.images[0].source.url : "https://blockbuild.africa/wp-content/uploads/2021/12/reddit.jpg";
             output += `
       <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="${image}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${post.title}</h5>
-          <p class="card-text">{post.selftext}</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">${truncateText(post.selftext, 100)}</p>
+          <a href="${post.url}" target="_blank" class="btn btn-primary">Read More</a>
         </div>
       </div>
       `;
@@ -53,16 +55,23 @@ function showMessage(message, className) {
 // Search Reddit
 function searchReddit(searchTerm, searchLimit, sortBy) {
     return fetch(`http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`).then((res)=>res.json()).then((data)=>data.data.children.map((data)=>data.data)).catch((err)=>console.log(err));
-} // async function searchReddit(searchTerm, searchLimit, sortBy) {
- //   try {
- //     const res = await fetch(
- //       `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
- //     );
- //     const data = await res.json();
- //     return data.data.children.map((data_1) => data_1.data);
- //   } catch (err) {
- //     return console.log(err);
- //   }
- // }
+}
+// async function searchReddit(searchTerm, searchLimit, sortBy) {
+//   try {
+//     const res = await fetch(
+//       `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
+//     );
+//     const data = await res.json();
+//     return data.data.children.map((data_1) => data_1.data);
+//   } catch (err) {
+//     return console.log(err);
+//   }
+// }
+// Truncate text
+function truncateText(text, limit) {
+    const shortened = text.indexOf(" ", limit);
+    if (shortened === -1) return text;
+    return text.substring(0, shortened);
+}
 
 //# sourceMappingURL=index.579125c3.js.map
