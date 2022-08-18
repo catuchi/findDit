@@ -37,6 +37,11 @@ searchForm.addEventListener("submit", (e) => {
           <a href="${
             post.url
           }" target="_blank" class="btn btn-primary">Read More</a>
+          <hr>
+          <span class="badge badge-secondary">Subreddit: ${
+            post.subreddit
+          }</span>
+          <span class="badge badge-dark">Score: ${post.score}</span>
         </div>
       </div>
       `;
