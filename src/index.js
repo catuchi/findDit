@@ -8,6 +8,31 @@ searchForm.addEventListener("submit", (e) => {
   const sortBy = document.querySelector('input[name="sortby"]:checked').value;
   // get limit
   const searchLimit = document.getElementById("limit").value;
-  console.log({ searchTerm }, { sortBy }, { searchLimit });
+
+  // check input
+  if (!searchTerm) {
+    // show message
+    showMessage("Please add a search term", "alert-danger");
+  }
   e.preventDefault();
 });
+
+// show message
+function showMessage(message, className) {
+  // create div
+  const div = document.createElement("div");
+  // add classes
+  div.className = `alert ${className}`;
+  // add text
+  div.appendChild(document.createTextNode(message));
+  // get parent element
+  const searchContainer = document.getElementById("search-container");
+  // get search
+  const search = document.getElementById("search");
+
+  // insert message
+  searchContainer.insertBefore(div, search);
+
+  // Timeout alert
+  setTimeout(() => document.querySelector(".alert").remove(), 3000);
+}
