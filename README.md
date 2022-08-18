@@ -28,7 +28,8 @@ Javascript, HTML, CSS, Bootstrap, Parcel Bundler
 
 ## Screenshots
 
-![App Screenshot](https://raw.githubusercontent.com/catuchi/TextToSpeech/main/dist/img/App%20Screenshot.png)
+![App Screenshot 1](https://github.com/catuchi/finddit/blob/main/src/Screen%20Shot%202022-08-18%20at%205.22.00%20PM.png?raw=true)
+![App Screenshot 2](https://github.com/catuchi/finddit/blob/main/src/Screen%20Shot%202022-08-18%20at%205.22.32%20PM.png?raw=true)
 
 ## Version
 
