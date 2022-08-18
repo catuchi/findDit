@@ -6,7 +6,7 @@ A Reddit article search application built with Parcel bundler and Bootstrap
 
 ```bash
 # Install Parcel globally
-npm install -g parcel-bundler
+npm install --save-dev parcel
 
 # Serve on localhost:1234
 parcel src/index.html
