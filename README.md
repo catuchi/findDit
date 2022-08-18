@@ -9,7 +9,7 @@ A Reddit article search application built with Parcel bundler and Bootstrap
 npm install --save-dev parcel
 
 # Serve on localhost:1234
-parcel src/index.html
+npm start
 
 # Compiled code in ./dist
 ```
