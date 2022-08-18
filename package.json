@@ -2,7 +2,7 @@
   "name": "finddit",
   "version": "1.0.0",
   "description": "Reddit search app",
-  "default": "src/index.html",
+  "default": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel src/index.html",
