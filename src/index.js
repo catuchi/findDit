@@ -78,7 +78,7 @@ function showMessage(message, className) {
 // Search Reddit
 function searchReddit(searchTerm, searchLimit, sortBy) {
   return fetch(
-    `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
+    `https://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
   )
     .then((res) => res.json())
     .then((data) => data.data.children.map((data) => data.data))
