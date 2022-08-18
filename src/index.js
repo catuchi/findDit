@@ -14,6 +14,33 @@ searchForm.addEventListener("submit", (e) => {
     // show message
     showMessage("Please add a search term", "alert-danger");
   }
+
+  // clear input
+  searchInput.value = "";
+
+  // search reddit
+  searchReddit(searchTerm, searchLimit, sortBy).then((results) => {
+    let output = '<div class="card-columns">';
+
+    // loop through posts
+    results.forEach((post) => {
+      output += `
+      <div class="card">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">${post.title}</h5>
+          <p class="card-text">{post.selftext}</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      `;
+    });
+
+    output += "</div>";
+
+    document.getElementById("results").innerHTML = output;
+  });
+
   e.preventDefault();
 });
 
@@ -36,3 +63,25 @@ function showMessage(message, className) {
   // Timeout alert
   setTimeout(() => document.querySelector(".alert").remove(), 3000);
 }
+
+// Search Reddit
+function searchReddit(searchTerm, searchLimit, sortBy) {
+  return fetch(
+    `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
+  )
+    .then((res) => res.json())
+    .then((data) => data.data.children.map((data) => data.data))
+    .catch((err) => console.log(err));
+}
+
+// async function searchReddit(searchTerm, searchLimit, sortBy) {
+//   try {
+//     const res = await fetch(
+//       `http://www.reddit.com/search.json?q=${searchTerm}&sort=${sortBy}&limit=${searchLimit}`
+//     );
+//     const data = await res.json();
+//     return data.data.children.map((data_1) => data_1.data);
+//   } catch (err) {
+//     return console.log(err);
+//   }
+// }
