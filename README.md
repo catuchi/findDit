@@ -14,6 +14,10 @@ npm start
 # Compiled code in ./dist
 ```
 
+## Demo
+
+This app is deployed on netlify. [App Demo](https://unique-gumdrop-4fce24.netlify.app/)
+
 ## API Reference
 
 [Reddit Search API](https://www.reddit.com/dev/api/#GET_search)
